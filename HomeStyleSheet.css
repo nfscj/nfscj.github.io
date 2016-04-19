@@ -1,0 +1,14 @@
+﻿body {
+}
+.program-space{
+    border:2px solid black;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 25%;
+    margin-right: 25%;
+    height:400px;
+    width:600px;
+}
+.header {
+    text-align: center;
+}

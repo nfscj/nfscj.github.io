@@ -1,7 +1,63 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Natural Selection Circles</title>
+    <link href="../CSS/HomeStyleSheet.css" rel="stylesheet" />
+</head>
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <h2 class="header">Welcome To Natural Selction Squares</h2>
+    <div class="program-space">
+        <canvas id="canvas" width="600" height="400"></canvas>
+        <button onclick="runMain()">Draw Squares</button>
+        <script>
+
+                function runMain() {
+                    var Xmin = 1;
+                    var Xmax = 529;
+                    var Ymin = 1;
+                    var Ymax = 329;
+
+                    function RandomintY(Ymin, Ymax) {
+                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
+                    }
+                    function RandomintX(Xmin, Xmax) {
+                        return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
+                    }
+
+
+
+
+                    function drawRectangles() {
+
+                            var canvas = document.getElementById("canvas"),
+                                ctx = canvas.getContext("2d");
+                            ctx.clearRect(0, 0, 1000, 1000)
+                            for (i = 0; i < 3; i++) {
+                                function RandomintY(Ymin, Ymax) {
+                                    return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
+                                }
+                                function RandomintX(Xmin, Xmax) {
+                                    return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
+                                }
+
+                                var x = RandomintX(1, 479)
+                                var y = RandomintY(1, 279)
+
+                                ctx.lineWidth = 1;
+                                ctx.strokeRect(x, y, 120, 120);
+                                ctx.fillStyle = "#000000";
+                                ctx.fillRect(x, y, 120, 120);
+                            }
+                    }
+
+                    drawRectangles();
+
+                }
+
+        </script>
+
+    </div>
+
 </body>
 </html>
+
