@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>Natural Selection Circles</title>
-
+    
     <link href="HomeStyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <h2 class="header">Welcome To Natural Selction Squares</h2>
     <div class="program-space">
         <canvas id="canvas" width="600" height="400"></canvas>
-
+        
         <button onclick="runMain()">Draw Squares</button>
         <script>
 
@@ -20,10 +20,10 @@
                 ctx.clearRect(0, 0, 1000, 1000)
                 var sqStack = new Array();
                 FirstSquare()
-
-
-
-
+                
+                
+                
+                
 
                 function GenSquare()
                 {
@@ -33,7 +33,7 @@
                     function RandomintY(Ymin, Ymax) {
                         return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
                     }
-
+                    
                         var x = RandomintX(1, 479)
                         var y = RandomintY(1, 279)
                         var width = 120
@@ -41,11 +41,11 @@
                         var sqInfo = [x, y, width, height];
                         console.debug(sqInfo)
                         sqStack.push(sqInfo)
-
+                        
                 }
                 function PrintSquares()
                 {
-
+                    
                     for (i = 0; i < 3; i++)
                     {
                         var squareToPrint = sqStack.pop()
@@ -100,7 +100,7 @@
                             sqStack.pop()
                             ThirdSquare()
                         }
-
+                        
                     }
                     else {
                         console.debug("square 3 is bad retry")
@@ -110,13 +110,13 @@
                 }
                 function FirstSquare()
                 {
-
+                    
                     GenSquare()
                     SecondSquare()
                 }
                 function SecondSquare()
                 {
-
+                    
                     GenSquare()
                     CheckCollide1()
                 }
@@ -126,11 +126,11 @@
                     CheckCollide2()
                 }
             }
+                    
 
+                    
 
-
-
-
+                
 
         </script>
 
@@ -138,3 +138,4 @@
 
 </body>
 </html>
+
