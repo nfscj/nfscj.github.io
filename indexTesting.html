@@ -2,79 +2,108 @@
 <html>
 <head>
     <title>Natural Selection Circles</title>
-    
+
     <link href="HomeStyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <h2 class="header">Welcome To Natural Selction Squares</h2>
     <div class="program-space">
         <canvas id="canvas" width="600" height="400"></canvas>
-        
+
         <button onclick="runMain()">Draw Squares</button>
+        <div>
+            <br>
+            <br>
+            <button onClick="choose('1')">1 Square</button>
+            <button onClick="choose('2')">2 Squares</button>
+            <button onClick="choose('3')">3 Squares</button>
+            <button onClick="choose('4')">4 Squares</button>
+            <button onClick="choose('5')">5 Squares</button>
+            <button onClick="choose('6')">6 Squares</button>
+        </div>
+
         <script>
+            var numOfSquares;
+            function choose(choice) {
+                numOfSquares = choice;
+            }
 
-            function runMain() {
-                    //set bounds for square spawning
-                    var Xmin = 1;
-                    var Xmax = 529;
-                    var Ymin = 1;
-                    var Ymax = 329;
 
-                    //Generate Randon y position
-                    function RandomintY(Ymin, Ymax) {
-                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                    }
-                    //Generate Randon x position
+            function runMain()
+            {
+                var canvas = document.getElementById("canvas"),
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 1000, 1000)
+                var sqStack = new Array();
+
+                 //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
+
+
+                CreateCanvasSquares()
+                //Runs program to paint canvas
+                function CreateCanvasSquares() {
+
+                    GenSquare()
+
+                    for (i = 1; i < numOfSquares; i++)
+                        {
+                            GenSquare()
+                            CheckNewSquare()
+                        }
+                    PrintSquares()
+                }
+                //Generates square at random position
+                function GenSquare() {
                     function RandomintX(Xmin, Xmax) {
                         return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
                     }
-                    
-
-
-                    function drawRectangles() {
-
-                            var canvas = document.getElementById("canvas"),
-                                ctx = canvas.getContext("2d");
-                            ctx.clearRect(0, 0, 1000, 1000)
-                            function RandomintY(Ymin, Ymax) {
-                                return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                            }
-                            function RandomintX(Xmin, Xmax) {
-                                return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
-                            }
-                            
-                            var sqStack = new Array();
-
-                            for (i = 0; i < 3; i++) {
-                                
-
-                                var x = RandomintX(1, 479)
-                                var y = RandomintY(1, 279)
-                                var width = 120
-                                var height = 120
-
-                                ctx.lineWidth = 1;
-                                ctx.strokeRect(x, y, width, height);
-                                ctx.fillStyle = "#000000";
-                                ctx.fillRect(x, y, width, height);
-                                
-                                var sqInfo = [x, y, width, height];
-                                
-                                sqStack.push(sqInfo);
-                                
-                                
-                            }
-                            console.debug(sqStack[0])
-                            console.debug(sqStack[1])
-                            console.debug(sqStack[2])
-                            console.debug(sqStack.pop())
-                            
-                            
+                    function RandomintY(Ymin, Ymax) {
+                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
                     }
 
-                    drawRectangles();
+                    var x = RandomintX(1, 479)
+                    var y = RandomintY(1, 279)
+                    var width = 120
+                    var height = 120
+                    var sqInfo = [x, y, width, height];
+                    console.debug(sqInfo)
+                    sqStack.push(sqInfo)
 
                 }
+                //Checks to see if new square overlaps existing squares
+                function CheckNewSquare() {
+                    for (p = 0; p < i; p++) {
+                        var sq0 = sqStack[p]
+                        var sq1 = sqStack[i]
+                        var x1 = sq0[0]
+                        var y1 = sq0[1]
+                        var x2 = sq1[0]
+                        var y2 = sq1[1]
+                        if ((x2 > (x1 + 130)) || (x2 < (x1 - 130)) || (y2 > (y1 + 130)) || (y2 < (y1 - 130))) {
+                            console.debug("square " + i + " is good")
+                        }
+                        else {
+                            console.debug("square " + i + " is bad, retry")
+                            sqStack.pop()
+                            GenSquare()
+                            CheckNewSquare()
+                        }
+                    }
+
+                }
+                //Prints out all squares
+                function PrintSquares() {
+
+                    for (p = 0; p < numOfSquares; p++) {
+                        var squareToPrint = sqStack.pop()
+                        console.debug(squareToPrint)
+                        ctx.lineWidth = 1;
+                        ctx.strokeRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
+                        ctx.fillStyle = "#000000";
+                        ctx.fillRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
+                    }
+                }
+            }
 
         </script>
 
@@ -82,4 +111,3 @@
 
 </body>
 </html>
-
