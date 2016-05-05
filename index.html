@@ -21,8 +21,15 @@
             <button onClick="choose('5')">5 Squares</button>
             <button onClick="choose('6')">6 Squares</button>
         </div>
-
+        <div>
+            <br>
+            <br>
+            <button onclick="DrawCircles()">Draw Circles</button>
+            <br>
+            <br>
+        </div>
         <script>
+            //========================================THE SCRIPT FOR SQUARES===============================================
             var numOfSquares;
             function choose(choice) {
                 numOfSquares = choice;
@@ -43,16 +50,33 @@
                 //Runs program to paint canvas
                 function CreateCanvasSquares() {
 
-                    GenSquare()
+                    GenFirstSquare()
 
                     for (i = 1; i < numOfSquares; i++)
                         {
                             GenSquare()
-                            CheckNewSquare()
+
                         }
                     PrintSquares()
                 }
                 //Generates square at random position
+                function GenFirstSquare() {
+                    function RandomintX(Xmin, Xmax) {
+                        return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
+                    }
+                    function RandomintY(Ymin, Ymax) {
+                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
+                    }
+
+                    var x = RandomintX(1, 499)
+                    var y = RandomintY(1, 299)
+                    var width = 100
+                    var height = 100
+                    var sqInfo = [x, y, width, height];
+                    console.debug(sqInfo)
+                    sqStack.push(sqInfo)
+
+                }
                 function GenSquare() {
                     function RandomintX(Xmin, Xmax) {
                         return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
@@ -61,14 +85,14 @@
                         return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
                     }
 
-                    var x = RandomintX(1, 479)
-                    var y = RandomintY(1, 279)
-                    var width = 120
-                    var height = 120
+                    var x = RandomintX(1, 499)
+                    var y = RandomintY(1, 299)
+                    var width = 100
+                    var height = 100
                     var sqInfo = [x, y, width, height];
                     console.debug(sqInfo)
                     sqStack.push(sqInfo)
-
+                    CheckNewSquare()
                 }
                 //Checks to see if new square overlaps existing squares
                 function CheckNewSquare() {
@@ -86,7 +110,7 @@
                             console.debug("square " + i + " is bad, retry")
                             sqStack.pop()
                             GenSquare()
-                            CheckNewSquare()
+
                         }
                     }
 
@@ -98,7 +122,6 @@
                         var squareToPrint = sqStack.pop()
                         console.debug(squareToPrint)
                         ctx.lineWidth = 1;
-                        ctx.strokeRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
                         ctx.fillStyle = "#000000";
                         ctx.fillRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
                     }
@@ -107,6 +130,109 @@
 
         </script>
 
+
+
+        <script>
+            //========================================THE SCRIPT FOR CIRCLES===============================================
+
+                var numOfCircles = 20;
+
+
+
+            function DrawCircles() {
+                var canvas = document.getElementById("canvas"),
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 1000, 1000)
+                var circleStack = new Array();
+
+                
+
+
+                CreateCanvasCircles()
+                //Runs program to paint canvas
+                function CreateCanvasCircles() {
+
+                    GenFirstCircle()
+
+                    for (i = 1; i < numOfCircles; i++) {
+                        GenCircle()
+
+                    }
+                    PrintCircles()
+                }
+                //Generates first circle at random position
+                function GenFirstCircle() {
+                    function RandomintX(Xmin, Xmax) {
+                        return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
+                    }
+                    function RandomintY(Ymin, Ymax) {
+                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
+                    }
+
+                    var x = RandomintX(25, 574)
+                    var y = RandomintY(25, 374)
+                    var width = 25
+                    var height = 0
+                    var circleInfo = [x, y, width, height];
+                    console.debug(circleInfo)
+                    circleStack.push(circleInfo)
+
+                }
+                function GenCircle() {
+                    function RandomintX(Xmin, Xmax) {
+                        return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
+                    }
+                    function RandomintY(Ymin, Ymax) {
+                        return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
+                    }
+
+                    var x = RandomintX(25, 574)
+                    var y = RandomintY(25, 374)
+                    var width = 25
+                    var height = 0
+                    var circleInfo = [x, y, width, height];
+                    console.debug(circleInfo)
+                    circleStack.push(circleInfo)
+                    CheckNewCircles()
+                }
+                //Checks to see if new square overlaps existing squares
+                function CheckNewCircles() {
+                    for (p = 0; p < i; p++) {
+                        var circle0 = circleStack[p]
+                        var circle1 = circleStack[i]
+                        var x1 = circle0[0]
+                        var y1 = circle0[1]
+                        var x2 = circle1[0]
+                        var y2 = circle1[1]
+                        if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
+                            console.debug("circle " + i + " is good")
+                        }
+                        else {
+                            console.debug("circle " + i + " is bad, retry")
+                            circleStack.pop()
+                            GenCircle()
+
+                        }
+                    }
+
+                }
+                //Prints out all squares
+                function PrintCircles() {
+
+                    for (p = 0; p < numOfCircles; p++) {
+                        var circleToPrint = circleStack.pop()
+                        console.debug(circleToPrint)
+                        ctx.strokeStyle = "#FF0000";
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.arc(circleToPrint[0], circleToPrint[1], circleToPrint[2], circleToPrint[3], 2 * Math.PI);
+                        ctx.stroke();
+
+                    }
+                }
+            }
+
+        </script>
     </div>
 
 </body>
