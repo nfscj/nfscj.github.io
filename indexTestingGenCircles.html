@@ -35,7 +35,7 @@
             function choose(choice) {
                 numOfSquares = choice;
             }
-
+            
 
             function runMain()
             {
@@ -45,7 +45,7 @@
                 var canvas = document.getElementById("canvas"),
                 ctx = canvas.getContext("2d");
                 ctx.clearRect(0, 0, 1000, 1000)
-
+                
 
                  //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
@@ -62,7 +62,7 @@
 
                         }
                     PrintSquares()
-
+                    
                 }
                 //Generates square at random position
                 function GenFirstSquare() {
@@ -133,17 +133,17 @@
                     }
                 }
             }
-
+            
             //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
 
             var numOfCircles = 10;
 
-
+            
 
             function DrawCircles() {
                 var canvas = document.getElementById("canvas"),
                 ctx = canvas.getContext("2d");
-
+                
                 var circleStack = new Array();
 
                 //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
@@ -157,7 +157,7 @@
 
                     for (i = 1; i < numOfCircles; i++) {
                         GenCircle()
-
+                        
                     }
                     PrintCircles()
                 }
@@ -169,7 +169,7 @@
                     function RandomintY(Ymin, Ymax) {
                         return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
                     }
-
+                    
                     var x = RandomintX(25, 574)
                     var y = RandomintY(25, 374)
                     var radius = 25
@@ -207,13 +207,13 @@
                         var y2 = circle1[1]
                         if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
                             console.debug("circle " + i + " is good")
-
+                            
                         }
                         else {
                             console.debug("circle " + i + " is bad, retry")
                             circleStack.pop()
                             GenCircle()
-
+                            
                         }
                     }
                 }
@@ -280,7 +280,7 @@
 
 
         <script>
-
+            
 
 
         </script>

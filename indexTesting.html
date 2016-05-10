@@ -103,7 +103,7 @@
                         var y1 = sq0[1]
                         var x2 = sq1[0]
                         var y2 = sq1[1]
-                        if ((x2 > (x1 + 130)) || (x2 < (x1 - 130)) || (y2 > (y1 + 130)) || (y2 < (y1 - 130))) {
+                        if ((x2 > (x1 + 101)) || (x2 < (x1 - 101)) || (y2 > (y1 + 101)) || (y2 < (y1 - 101))) {
                             console.debug("square " + i + " is good")
                         }
                         else {
@@ -119,7 +119,7 @@
                 function PrintSquares() {
 
                     for (p = 0; p < numOfSquares; p++) {
-                        var squareToPrint = sqStack.pop()
+                        var squareToPrint = sqStack[p]
                         console.debug(squareToPrint)
                         ctx.lineWidth = 1;
                         //ctx.strokeRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
@@ -128,7 +128,7 @@
                     }
                 }
             }
-
+            
         </script>
         
 
@@ -136,7 +136,7 @@
         <script>
             //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
                 
-                var numOfCircles = 20;
+                var numOfCircles = 2;
             
 
 
@@ -172,9 +172,9 @@
 
                     var x = RandomintX(25, 574)
                     var y = RandomintY(25, 374)
-                    var width = 25
+                    var radius = 25
                     var height = 0
-                    var circleInfo = [x, y, width, height];
+                    var circleInfo = [(x-25), (y-25), radius, height];
                     console.debug(circleInfo)
                     circleStack.push(circleInfo)
                     
@@ -189,9 +189,9 @@
 
                     var x = RandomintX(25, 574)
                     var y = RandomintY(25, 374)
-                    var width = 25
+                    var radius = 25
                     var height = 0
-                    var circleInfo = [x, y, width, height];
+                    var circleInfo = [(x-25), (y-25), radius, height];
                     console.debug(circleInfo)
                     circleStack.push(circleInfo)
                     CheckNewCircles()
@@ -207,6 +207,7 @@
                         var y2 = circle1[1]
                         if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
                             console.debug("circle " + i + " is good")
+                            CheckCirclesOverSquares()
                         }
                         else {
                             console.debug("circle " + i + " is bad, retry")
@@ -215,25 +216,43 @@
                             
                         }
                     }
-
                 }
-                //Prints out all squares
-                function PrintCircles() {
 
-                    for (p = 0; p < numOfCircles; p++) {
-                        var circleToPrint = circleStack.pop()
-                        console.debug(circleToPrint)
-                        ctx.strokeStyle = "#FF0000";
-                        ctx.lineWidth = 3;
-                        ctx.beginPath();
-                        ctx.arc(circleToPrint[0], circleToPrint[1], circleToPrint[2], circleToPrint[3], 2 * Math.PI);
-                        ctx.stroke();
-                        
+                function CheckCirclesOverSquares() {
+                    for (p = 0; p < i; p++) {
+                        var square0 = sqStack[p]
+                        var circle1 = circleStack[i]
+                        var x1 = square0[0]
+                        var y1 = square0[1]
+                        var x2 = circle1[0]
+                        var y2 = circle1[1]
+                        if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
+                            console.debug("circle " + i + " is good and doesn't overlap squares")
+                        }
+                        else {
+                            console.debug("circle " + i + " is bad and overlaps, retry")
+                            circleStack.pop()
+                            GenCircle()
+                        }
                     }
                 }
-            }
+                        //Prints out all squares
+                        function PrintCircles() {
 
-        </script>
+                            for (p = 0; p < numOfCircles; p++) {
+                                var circleToPrint = circleStack[p]
+                                console.debug(circleToPrint)
+                                ctx.strokeStyle = "#FF0000";
+                                ctx.lineWidth = 3;
+                                ctx.beginPath();
+                                ctx.arc((circleToPrint[0]+25), (circleToPrint[1]+25), circleToPrint[2], circleToPrint[3], 2 * Math.PI);
+                                ctx.stroke();
+                            }
+                    }
+                }
+                    
+                
+          </script>
     </div>
 
 </body>
