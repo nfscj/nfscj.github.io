@@ -25,6 +25,7 @@
             <br>
             <br>
             <button onclick="DrawCircles()">Draw Circles</button>
+            <button onclick="NextGenCircles()">Evolve Circles</button>
             <br>
             <br>
         </div>
@@ -35,17 +36,18 @@
             function choose(choice) {
                 numOfSquares = choice;
             }
-            
+
 
             function runMain()
             {
+                //for loop pops all old squares off stack when user redraws new squares
                 for (i = 0; i < numOfSquares; i++) {
                     sqStack.pop()
                 }
                 var canvas = document.getElementById("canvas"),
-                ctx = canvas.getContext("2d");
+                ctx = canvas.getContext("2d");//clears the canvas
                 ctx.clearRect(0, 0, 1000, 1000)
-                
+
 
                  //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
@@ -62,7 +64,7 @@
 
                         }
                     PrintSquares()
-                    
+
                 }
                 //Generates square at random position
                 function GenFirstSquare() {
@@ -75,9 +77,7 @@
 
                     var x = RandomintX(1, 499)
                     var y = RandomintY(1, 299)
-                    var width = 100
-                    var height = 100
-                    var sqInfo = [x, y, width, height];
+                    var sqInfo = { x: (x + 50), y: (y + 50) };
                     console.debug(sqInfo)
                     sqStack.push(sqInfo)
 
@@ -92,9 +92,7 @@
 
                     var x = RandomintX(1, 499)
                     var y = RandomintY(1, 299)
-                    var width = 100
-                    var height = 100
-                    var sqInfo = [x, y, width, height];
+                    var sqInfo = { x: (x + 50), y: (y + 50) };
                     console.debug(sqInfo)
                     sqStack.push(sqInfo)
                     CheckNewSquare()
@@ -104,10 +102,10 @@
                     for (p = 0; p < i; p++) {
                         var sq0 = sqStack[p]
                         var sq1 = sqStack[i]
-                        var x1 = sq0[0]
-                        var y1 = sq0[1]
-                        var x2 = sq1[0]
-                        var y2 = sq1[1]
+                        var x1 = sq0.x
+                        var y1 = sq0.y
+                        var x2 = sq1.x
+                        var y2 = sq1.y
                         if ((x2 > (x1 + 101)) || (x2 < (x1 - 101)) || (y2 > (y1 + 101)) || (y2 < (y1 - 101))) {
                             console.debug("square " + i + " is good")
                         }
@@ -129,22 +127,22 @@
                         ctx.lineWidth = 1;
                         //ctx.strokeRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
                         ctx.fillStyle = "#000000";
-                        ctx.fillRect(squareToPrint[0], squareToPrint[1], squareToPrint[2], squareToPrint[3]);
+                        ctx.fillRect(squareToPrint.x-50, squareToPrint.y-50, 100, 100);
                     }
                 }
             }
-            
+
             //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
 
-            var numOfCircles = 10;
-
-            
+            var numOfCircles = 4;
+            var circleStack = new Array();
+            var secondarycircleStack = new Array();
+            var canvas = document.getElementById("canvas"),
+                ctx = canvas.getContext("2d");
 
             function DrawCircles() {
-                var canvas = document.getElementById("canvas"),
-                ctx = canvas.getContext("2d");
-                
-                var circleStack = new Array();
+
+
 
                 //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
@@ -157,11 +155,11 @@
 
                     for (i = 1; i < numOfCircles; i++) {
                         GenCircle()
-                        
+
                     }
                     PrintCircles()
                 }
-                //Generates circle at random position
+                //Generates FIRST circle at random position
                 function GenFirstCircle() {
                     function RandomintX(Xmin, Xmax) {
                         return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
@@ -169,16 +167,39 @@
                     function RandomintY(Ymin, Ymax) {
                         return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
                     }
-                    
+
                     var x = RandomintX(25, 574)
                     var y = RandomintY(25, 374)
                     var radius = 25
-                    var height = 0
-                    var circleInfo = [(x - 25), (y - 25), radius, height];
+                    var circleInfo = { x: x, y: y, radius: radius };
                     console.debug(circleInfo)
                     circleStack.push(circleInfo)
                     CheckFirstCircleOverSquares()
                 }
+                //Checks ONLY FIRST circle against existing squares
+                function CheckFirstCircleOverSquares() {
+                    for (d = 0; d < numOfSquares; d++) {
+                        console.debug(d)
+                        console.debug(numOfCircles)
+                        var square0 = sqStack[d]
+                        var circle1 = circleStack[0]
+                        console.debug(circle1)
+
+                        var x1 = square0.x
+                        var y1 = square0.y
+                        var x2 = circle1.x
+                        var y2 = circle1.y
+                        if ((x2 > (x1 + 76)) || (x2 < (x1 - 76)) || (y2 > (y1 + 76)) || (y2 < (y1 - 76))) {
+                            console.debug("circle " + i + " is good and doesn't overlap squares")
+                        }
+                        else {
+                            console.debug("circle " + i + " is bad and overlaps, retry")
+                            circleStack.pop()
+                            GenFirstCircle()
+                        }
+                    }
+                }
+                //Generates OTHER circles at random position
                 function GenCircle() {
                     function RandomintX(Xmin, Xmax) {
                         return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
@@ -190,45 +211,23 @@
                     var x = RandomintX(25, 574)
                     var y = RandomintY(25, 374)
                     var radius = 25
-                    var height = 0
-                    var circleInfo = [(x - 25), (y - 25), radius, height];
+                    var circleInfo = { x: x, y: y, radius:radius };
                     console.debug(circleInfo)
                     circleStack.push(circleInfo)
                     CheckCirclesOverSquares()
                 }
-                //Checks to see if new circle overlaps existing circles
-                function CheckNewCircles() {
-                    for (p = 0; p < i; p++) {
-                        var circle0 = circleStack[p]
-                        var circle1 = circleStack[i]
-                        var x1 = circle0[0]
-                        var y1 = circle0[1]
-                        var x2 = circle1[0]
-                        var y2 = circle1[1]
-                        if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
-                            console.debug("circle " + i + " is good")
-                            
-                        }
-                        else {
-                            console.debug("circle " + i + " is bad, retry")
-                            circleStack.pop()
-                            GenCircle()
-                            
-                        }
-                    }
-                }
-
+                //Checks to see if new circle overlaps existing squares
                 function CheckCirclesOverSquares() {
                     for (d = 0; d < numOfSquares; d++) {
                         console.debug(d)
                         console.debug(numOfSquares)
-                        var square0 = sqStack[d]
+                        var square = sqStack[d]
                         var circle = circleStack[i]
-                        var x1 = square0[0]
-                        var y1 = square0[1]
-                        var x2 = circle[0]
-                        var y2 = circle[1]
-                        if ((x2 > (x1 + 101)) || (x2 < (x1 - 101)) || (y2 > (y1 + 101)) || (y2 < (y1 - 101))) {
+                        var x1 = square.x
+                        var y1 = square.y
+                        var x2 = circle.x
+                        var y2 = circle.y
+                        if ((x2 > (x1 + 76)) || (x2 < (x1 - 76)) || (y2 > (y1 + 76)) || (y2 < (y1 - 76))) {
                             console.debug("circle " + i + " is good and doesn't overlap squares")
                             CheckNewCircles()
                         }
@@ -239,29 +238,30 @@
                         }
                     }
                 }
-                function CheckFirstCircleOverSquares() {
-                    for (d = 0; d < numOfSquares; d++) {
-                        console.debug(d)
-                        console.debug(numOfCircles)
-                        var square0 = sqStack[d]
-                        var circle1 = circleStack[0]
-                        console.debug(circle1)
+                //Checks to see if new circle overlaps existing circles
+                function CheckNewCircles() {
+                    for (p = 0; p < i; p++) {
+                        var circle0 = circleStack[p]
+                        var circle1 = circleStack[i]
+                        var x1 = circle0.x
+                        var y1 = circle0.y
+                        var x2 = circle1.x
+                        var y2 = circle1.y
+                        if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
+                            console.debug("circle " + i + " is good")
 
-                        var x1 = square0[0]
-                        var y1 = square0[1]
-                        var x2 = circle1[0]
-                        var y2 = circle1[1]
-                        if ((x2 > (x1 + 101)) || (x2 < (x1 - 101)) || (y2 > (y1 + 101)) || (y2 < (y1 - 101))) {
-                            console.debug("circle " + i + " is good and doesn't overlap squares")
                         }
                         else {
-                            console.debug("circle " + i + " is bad and overlaps, retry")
+                            console.debug("circle " + i + " is bad, retry")
                             circleStack.pop()
-                            GenFirstCircle()
+                            GenCircle()
+
                         }
                     }
                 }
-                //Prints out all circles
+
+
+                //Prints out all successful circles
                 function PrintCircles() {
 
                     for (p = 0; p < numOfCircles; p++) {
@@ -270,17 +270,98 @@
                         ctx.strokeStyle = "#FF0000";
                         ctx.lineWidth = 3;
                         ctx.beginPath();
-                        ctx.arc((circleToPrint[0] + 25), (circleToPrint[1] + 25), circleToPrint[2], circleToPrint[3], 2 * Math.PI);
+                        ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
                         ctx.stroke();
                     }
                 }
+
             }
+            //===================================================MUTATION OF CIRCLES===================================================
+            function NextGenCircles() {
+                for (p = 0; p < numOfCircles; p++) {
+                    console.debug(circleStack[p] + "circlestack[p] debugger")
+                    MutateCircle()
+                    TransferStack()
+                }
+            }
+            function Randomint(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function MutateCircle() {
+
+
+
+
+                for (i = 0; i < 3; i++) {
+                    Mutation()
+                }
+                for (c = 0; c < numOfCircles; c++) {
+                    circleStack.pop()
+                }
+            }
+
+            function Mutation() {
+                var radiusGrowth = Randomint(1, 10)
+                var xMutation = Randomint(-10, 10)
+                var yMutation = Randomint(-10, 10)
+                var circleToMutate = circleStack[c]
+                var circleMutated = { x: (circleToMutate.x + xMutation), y: (circleToMutate.y + yMutation), radius: (circleToMutate.radius + radiusGrowth) }
+                console.debug(circleMutated+" is the mutated circle")
+                secondarycircleStack.push(circleMutated)
+                checkMutatedOverSquares()
+
+            }
+            function checkMutatedOverSquares() {
+                for (d = 0; d < numOfSquares; d++) {
+
+                    var square = sqStack[d]
+                    var circle = secondarycircleStack[i]
+                    var x1 = square.x
+                    var y1 = square.y
+                    var x2 = circle.x
+                    var y2 = circle.y
+                    if ((x2 > (x1 + (50 + circle.radius))) || (x2 < (x1 - (50 + circle.radius))) || (y2 > (y1 + (50 + circle.radius))) || (y2 < (y1 - (50 + circle.radius)))) {
+                        console.debug("circle " + i + " is good and doesn't overlap squares")
+
+                    }
+                    else {
+                        console.debug("circle " + i + " is bad and overlaps, retry")
+                        circleStack.pop()
+                        Mutation()
+                    }
+                }
+            }
+            function changeNumOfCircles(updatedNum) {
+                numOfCircles = updatedNum;
+            }
+            function TransferStack() {
+                for (a = 0; a < (numOfCircles * 3) ; a++) {
+                    var transfer = secondarycircleStack[c]
+                    circleStack.push(transfer)
+                }
+                for (a = 0; a < (numOfCircles * 3) ; a++) {
+                    secondarycircleStack.pop()
+                }
+
+                for (a = 0; a < (numOfCircles * 3) ; a++) {
+                    var circleToPrint = circleStack[a]
+                    console.debug(circleToPrint)
+                    ctx.strokeStyle = "#FF0000";
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
+                    ctx.stroke();
+
+                }
+                changeNumOfCircles(numOfCircles * 3)
+            }
+            //function Circle(x, y, radius) { this.x = x; this.y = y; this.radius = radius; console.debug("Made a new circle!"); this.clone = function () { return new Circle(this.x, this.y, this.radius); }; this.mutate = function () { this.x += 1; this.y += 1; this.radius += 1; }}
         </script>
 
 
 
         <script>
-            
+
 
 
         </script>
