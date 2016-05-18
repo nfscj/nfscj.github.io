@@ -10,7 +10,6 @@
     <div class="program-space">
         <canvas id="canvas" width="600" height="400"></canvas>
 
-        <button onclick="runMain()">Draw Squares</button>
         <div>
             <br>
             <br>
@@ -24,12 +23,30 @@
         <div>
             <br>
             <br>
-            <button onclick="DrawCircles()">Draw Circles</button>
-            <button onclick="NextGenCircles()">Evolve Circles</button>
+            <button onclick="runMain(); action('show');">Draw Squares</button>
+        </div>
+        <div>
+            <br>
+            <br>
+            <button id="circleHide" value="circleHide" onclick="DrawCircles(); action('hide');">Draw Circles</button>
+            <button onclick="Evolve()">Evolve Circles</button>
+            <button onclick="StopEvolution()">Stop Evolving</button>
+            <br>
+            <br>
             <br>
             <br>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script>
+
+            function action(choice) {
+                hidden = choice;
+                if (hidden == "hide") {
+                    document.getElementById('circleHide').style.visibility = 'hidden';
+                } else {
+                    document.getElementById('circleHide').style.visibility = 'visible';
+                }
+            }
             //-----------------------------------------THE SCRIPT FOR SQUARES-----------------------------------------------
             var numOfSquares;
             var sqStack = new Array();
@@ -134,18 +151,18 @@
 
             //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
 
-            var numOfCircles = 2;
+            var numOfCircles = 8;
             var circleStack = new Array();
             var secondarycircleStack = new Array();
             var canvas = document.getElementById("canvas"),
                 ctx = canvas.getContext("2d");
 
             function DrawCircles() {
-                
+
                 for (i = 0; i < numOfCircles; i++) {
                     circleStack.pop()
                 }
-                
+
                 //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
 
@@ -276,26 +293,34 @@
                         ctx.stroke();
                     }
                 }
-                
+
             }
             //============================================MUTATION OF CIRCLES========================================
-            function NextGenCircles() {
-                MutateCircle()
-                TransferStack()
-                
+            function Evolve() {
+                nIntervId = setInterval(NextGenCircles, (.25*1000));
             }
-            
+            function StopEvolution() {
+                clearInterval(nIntervId);
+            }
+
+            function NextGenCircles() {
+
+                    MutateCircle()
+                    TransferStack()
+
+            }
+
             function MutateCircle() {
-                
-                
+
+
                 for (c = 0; c < numOfCircles; c++) {
-                   
+
                     for (i = 0; i < 1; i++) {
-                        
+
                         CreateCircleMutant()
-                        
+
                     }
-                    
+
                 }
 
                 for (c = 0; c < numOfCircles; c++) {
@@ -307,7 +332,7 @@
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
                 var circleToMutate = circleStack[c]
-                var circleMutated = { x: (circleToMutate.x + Randomint(-14, 14)), y: (circleToMutate.y + Randomint(-14, 14)), radius: (circleToMutate.radius + Randomint(0, 5)) }
+                var circleMutated = { x: (circleToMutate.x + Randomint(-8, 8)), y: (circleToMutate.y + Randomint(-8, 8)), radius: (circleToMutate.radius + Randomint(0, 2)) }
                 secondarycircleStack.push(circleMutated)
                 CheckBounds()
                 //clear old circles
@@ -317,8 +342,8 @@
                 ctx.beginPath();
                 ctx.arc(circleToMutate.x, circleToMutate.y, circleToMutate.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
                 ctx.stroke();
-                
-                
+
+
             }
             function CheckBounds() {
                 var circleBounds = secondarycircleStack[c]
@@ -332,7 +357,7 @@
             }
             function ProtectSquaresFromCircles() {
                 for (d = 0; d < numOfSquares; d++) {
-                    
+
                     var square = sqStack[d]
                     var circle = secondarycircleStack[c]
                     var x1 = square.x
@@ -340,7 +365,7 @@
                     var x2 = circle.x
                     var y2 = circle.y
                     if ((x2 > (x1 + (circle.radius + 53))) || (x2 < (x1 - (circle.radius + 53))) || (y2 > (y1 + (circle.radius + 53))) || (y2 < (y1 - (circle.radius + 53)))) {
-                        
+
                     }
                     else {
                         secondarycircleStack.pop()
@@ -368,7 +393,7 @@
                     ctx.beginPath();
                     ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
                     ctx.stroke();
-                    
+
                 }
                 changeNumOfCircles(numOfCircles * 1)
             }

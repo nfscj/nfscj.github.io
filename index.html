@@ -10,7 +10,6 @@
     <div class="program-space">
         <canvas id="canvas" width="600" height="400"></canvas>
 
-        <button onclick="runMain()">Draw Squares</button>
         <div>
             <br>
             <br>
@@ -24,12 +23,30 @@
         <div>
             <br>
             <br>
-            <button onclick="DrawCircles()">Draw Circles</button>
-            <button onclick="NextGenCircles()">Evolve Circles</button>
+            <button onclick="runMain(); action('show');">Draw Squares</button>
+        </div>
+        <div>
+            <br>
+            <br>
+            <button id="circleHide" value="circleHide" onclick="DrawCircles(); action('hide');">Draw Circles</button>
+            <button onclick="Evolve()">Evolve Circles</button>
+            <button onclick="StopEvolution()">Stop Evolving</button>
+            <br>
+            <br>
             <br>
             <br>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script>
+
+            function action(choice) {
+                hidden = choice;
+                if (hidden == "hide") {
+                    document.getElementById('circleHide').style.visibility = 'hidden';
+                } else {
+                    document.getElementById('circleHide').style.visibility = 'visible';
+                }
+            }
             //-----------------------------------------THE SCRIPT FOR SQUARES-----------------------------------------------
             var numOfSquares;
             var sqStack = new Array();
@@ -134,7 +151,7 @@
 
             //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
 
-            var numOfCircles = 2;
+            var numOfCircles = 8;
             var circleStack = new Array();
             var secondarycircleStack = new Array();
             var canvas = document.getElementById("canvas"),
@@ -279,9 +296,17 @@
 
             }
             //============================================MUTATION OF CIRCLES========================================
+            function Evolve() {
+                nIntervId = setInterval(NextGenCircles, (.25*1000));
+            }
+            function StopEvolution() {
+                clearInterval(nIntervId);
+            }
+
             function NextGenCircles() {
-                MutateCircle()
-                TransferStack()
+
+                    MutateCircle()
+                    TransferStack()
 
             }
 
@@ -307,7 +332,7 @@
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
                 var circleToMutate = circleStack[c]
-                var circleMutated = { x: (circleToMutate.x + Randomint(-15, 15)), y: (circleToMutate.y + Randomint(-15, 15)), radius: (circleToMutate.radius + Randomint(0, 3)) }
+                var circleMutated = { x: (circleToMutate.x + Randomint(-8, 8)), y: (circleToMutate.y + Randomint(-8, 8)), radius: (circleToMutate.radius + Randomint(0, 2)) }
                 secondarycircleStack.push(circleMutated)
                 CheckBounds()
                 //clear old circles
