@@ -63,6 +63,7 @@
 
             function runMain()
             {
+                document.getElementById("winner").innerHTML = " ";
                 //for loop pops all old squares off stack when user redraws new squares
                 for (i = 0; i < numOfSquares; i++) {
                     sqStack.pop()
@@ -424,7 +425,9 @@
             var circlesThatWon = 0
 
             function Eliminate() {
-                for (i = 0; i < numOfSquares; i++) {
+                winningCircles.pop()
+                
+                for (i = 0; i < numOfCircles; i++) {
 
                     for (p = 0; p < numOfCircles; p++) {
                         var circle0 = circleStack[i]
@@ -440,34 +443,37 @@
                             console.debug("the challenger has failed")
                             i++
                             p = 0
-
+                            
                         }
                     }
                     var winner = circleStack[i]
-                    winningCircles.push(winner)
-                    circlesThatWon++
+                    winningCircles.push(winner)//pushes winning circle
+                    
+                    WinnersCircle()
                 }
-                for (i = 0; i < numOfCircles; i++) {//clears circles currently on canvas
-                    var circleToMutate = circleStack[i]
-                    ctx.strokeStyle = "#FFFFFF";
-                    ctx.lineWidth = 5;
-                    ctx.beginPath();
-                    ctx.arc(circleToMutate.x, circleToMutate.y, circleToMutate.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                    ctx.stroke();
-                }
-                {//prints winning circles
-                    var circleToPrint = winningCircles[0]
-                    console.debug(circleToPrint)
-                    ctx.strokeStyle = "#FF0000";
-                    ctx.lineWidth = 3;
-                    ctx.beginPath();
-                    ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                    ctx.stroke();
-                }
+                function WinnersCircle() {
+                    for (i = 0; i < numOfCircles; i++) {//clears circles currently on canvas
+                        var circleToMutate = circleStack[i]
+                        ctx.strokeStyle = "#FFFFFF";
+                        ctx.lineWidth = 5;
+                        ctx.beginPath();
+                        ctx.arc(circleToMutate.x, circleToMutate.y, circleToMutate.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
+                        ctx.stroke();
+                    }
+                    {//prints winning circle
+                        var circleToPrint = winningCircles[0]
+                        console.debug(circleToPrint)
+                        ctx.strokeStyle = "#FF0000";
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
+                        ctx.stroke();
+                    }
 
-                {
-                    var circleToPrint = winningCircles[0]
-                    document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
+                    {//writes message with winning circle in html
+                        var circleToPrint = winningCircles[0]
+                        document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
+                    }
                 }
             }
             //function Circle(x, y, radius) { this.x = x; this.y = y; this.radius = radius; console.debug("Made a new circle!"); this.clone = function () { return new Circle(this.x, this.y, this.radius); }; this.mutate = function () { this.x += 1; this.y += 1; this.radius += 1; }}
