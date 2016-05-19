@@ -23,15 +23,15 @@
         <div>
             <br>
             <br>
-            <button onclick="runMain(); action('show');">Draw Squares</button>
+            <button onclick="runMain(); HideDrawCircle('show'); HideEvolve('show');">Draw Squares</button>
         </div>
         <div>
             <br>
             <br>
-            <button id="circleHide" value="circleHide" onclick="DrawCircles(); action('hide');">Draw Circles</button>
-            <button onclick="Evolve()">Evolve Circles</button>
+            <button id="circleHide" value="circleHide" onclick="DrawCircles(); HideDrawCircle('hide');">Draw Circles</button>
+            <button id="evolve" onclick="Evolve()">Evolve Circles</button>
             <button onclick="StopEvolution()">Stop Evolving</button>
-            <button onclick="Eliminate()">ELIMINATE THE WEAK</button>
+            <button onclick="Eliminate(); HideEvolve('hide')">ELIMINATE THE WEAK</button>
             <br>
             <p id="evolution"></p>
             <br>
@@ -45,12 +45,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script>
 
-            function action(choice) {
+            function HideDrawCircle(choice) {
                 hidden = choice;
                 if (hidden == "hide") {
                     document.getElementById('circleHide').style.visibility = 'hidden';
                 } else {
                     document.getElementById('circleHide').style.visibility = 'visible';
+                }
+            }
+            function HideEvolve(choice) {
+                hidden = choice;
+                if (hidden == "hide") {
+                    document.getElementById('evolve').style.visibility = 'hidden';
+                } else {
+                    document.getElementById('evolve').style.visibility = 'visible';
                 }
             }
             //-----------------------------------------THE SCRIPT FOR SQUARES-----------------------------------------------
@@ -70,6 +78,11 @@
                 //for loop pops all old squares off stack when user redraws new squares
                 for (i = 0; i < numOfSquares; i++) {
                     sqStack.pop()
+                }
+                for (i = 0; i < numOfCircles; i++) {
+                    circleStack.pop()
+                    winningCircles.pop()
+                    secondarycircleStack.pop()
                 }
                 var canvas = document.getElementById("canvas"),
                 ctx = canvas.getContext("2d");//clears the canvas
@@ -168,10 +181,8 @@
                 ctx = canvas.getContext("2d");
 
             function DrawCircles() {
-
-                for (i = 0; i < numOfCircles; i++) {
-                    circleStack.pop()
-                }
+                functionCount = 0;
+                
 
                 //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
@@ -310,8 +321,8 @@
             var functionCount = 0;
 
             function Evolve() {
-                functionCount = 0;
-                nIntervId = setInterval(NextGenCircles, (.25*1000));
+                
+                nIntervId = setInterval(NextGenCircles, (.02*1000));
             }
 
 
@@ -357,9 +368,9 @@
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
                 var circleToMutate = circleStack[c]
-                var circleMutated = { x: (circleToMutate.x + Randomint(-8, 8)), y: (circleToMutate.y + Randomint(-8, 8)), radius: (circleToMutate.radius + Randomint(0, 2)) }
+                var circleMutated = { x: (circleToMutate.x + Randomint(-1, 1)), y: (circleToMutate.y + Randomint(-1, 1)), radius: (circleToMutate.radius + Randomint(0, .25)) }
 
-                console.debug(circleMutated)//
+                
 
                 secondarycircleStack.push(circleMutated)
                 CheckBounds()
@@ -415,7 +426,6 @@
                 //prints mutated circles
                 for (k = 0; k< (numOfCircles * 1) ; k++) {
                     var circleToPrint = circleStack[k]
-                    console.debug(circleToPrint)
                     ctx.strokeStyle = "#FF0000";
                     ctx.lineWidth = 3;
                     ctx.beginPath();
@@ -480,7 +490,6 @@
                     }
                 }
             }
-            //function Circle(x, y, radius) { this.x = x; this.y = y; this.radius = radius; console.debug("Made a new circle!"); this.clone = function () { return new Circle(this.x, this.y, this.radius); }; this.mutate = function () { this.x += 1; this.y += 1; this.radius += 1; }}
         </script>
 
 
