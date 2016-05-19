@@ -63,7 +63,10 @@
 
             function runMain()
             {
-                document.getElementById("winner").innerHTML = " ";
+                { //clears output dialog
+                    document.getElementById("winner").innerHTML = " ";
+                    document.getElementById("evolution").innerHTML = " ";
+                }
                 //for loop pops all old squares off stack when user redraws new squares
                 for (i = 0; i < numOfSquares; i++) {
                     sqStack.pop()
@@ -304,13 +307,14 @@
             }
             //============================================MUTATION OF CIRCLES========================================
             var winningCircles = new Array();
-
+            var functionCount = 0;
 
             function Evolve() {
+                functionCount = 0;
                 nIntervId = setInterval(NextGenCircles, (.25*1000));
             }
 
-            var functionCount = 0;
+
 
             function StopEvolution() {
                 clearInterval(nIntervId);
@@ -426,7 +430,7 @@
 
             function Eliminate() {
                 winningCircles.pop()
-                
+
                 for (i = 0; i < numOfCircles; i++) {
 
                     for (p = 0; p < numOfCircles; p++) {
@@ -443,12 +447,12 @@
                             console.debug("the challenger has failed")
                             i++
                             p = 0
-                            
+
                         }
                     }
                     var winner = circleStack[i]
                     winningCircles.push(winner)//pushes winning circle
-                    
+
                     WinnersCircle()
                 }
                 function WinnersCircle() {
