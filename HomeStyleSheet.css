@@ -1,15 +1,76 @@
 ﻿body {
+    background-color: #f4f4f4;
+    width:100%;
+    
+    margin: 0px;
+    
+    padding-bottom:60px;
 }
 .program-space{
-    border:2px solid black;
+    background-color: white;
+    
     height:400px;
     width:600px;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    margin-left: auto;
-    margin-right: auto;
+    
     text-align: center;
 }
 .header {
+    text-align: center;
+    background-color: white;
+    top: 0px;
+    padding-top: 20px;
+    margin: 0px;
+    height: 50px;
+    box-shadow: 0px -5px 20px #242424;
+    position: fixed;
+    width: 100%;
+
+}
+button { 
+  width:130px; 
+  height:40px;
+} 
+#container{
+    background-color: white;
+    width: 1130px;
+    margin: 100px auto;
+    white-space: nowrap;
+    box-shadow: 0px 0px 7px #999999;
+}
+#program{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 60px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    width: 600px;
+    box-shadow: 0px 0px 4px #4D4D4D;
+}
+#buttonContainer{
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    text-align: center;
+    margin-top: 60px;
+}
+#outputDialog{
+    width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    white-space: nowrap;
+}
+#output{
+    display: inline-block; /*Display inline and maintain block characteristics.*/
+    width: 50%;
+    vertical-align: top;
+    position: relative;
+    text-align: center;
+}
+#winningButton{
+    width: 271px;
+    text-align: center;
+}
+#instructions{
     text-align: center;
 }
