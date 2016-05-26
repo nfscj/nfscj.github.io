@@ -6,13 +6,13 @@
 	color: #ffffff;
 	box-sizing: border-box;
 	top:-100px;
-
+    width: 100%;
 	-webkit-transition:top 0.3s;
 	transition:top 0.3s;
 }
 
 .header-fixed .header-limiter {
-	max-width: 1200px;
+	max-width: 1800px;
 	text-align: center;
 	margin: 0 auto;
 }
