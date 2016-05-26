@@ -9,7 +9,34 @@
     <h2 class="header">Welcome To Natural Selection Circles</h2>
 
 
+    <div id="container">
+        <div id="message">
+            <h1>A Lesson in Efficiency</h1>
+            <p>
+                Computers are powerful tools in our fast paced world.
+                We can run all kinds of simulations on computers to find
+                solutions to our problems. In the Natural Selection Squares demo,
+                a computer could find the perfect location to put a circle by trying
+                different sized circles on every pixel in the canvas. The canvas
+                is 600x400 pixels. A total of 24,000 pixels in the canvas means at
+                least 24,000 circles will be tried and that’s without different
+                sized circles being factored in. Let’s say for example that the
+                winning circle has a radius of 82 pixels, 24,000 pixels multiplied
+                by 82 radiuses is 1,968,000 possible circles for the computer to simulate.
+                This method of finding the perfect circle is known as brute force.
+                Brute force will eventually find you a solution but that would
+                be slow and very inefficient. I’ve created an algorithm that far more efficient.
+                <br>
+                <br>
+                My algorithm places eight small circles throughout the canvas.
+                It then randomly mutates each circle’s x, y, and radius attributes
+                until they grow as big as they can. My approach allows the computer
+                to find a near perfect candidate quickly in as few as 500 circles
+                and no more than 20,000 circles. Which is far less than 1,968,000 circles.
 
+            </p>
+        </div>
+    </div>
     <div id="container">
 
         <div id="program" class="program-space">
@@ -30,31 +57,21 @@
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
             <script>
+                function changeColor(answer) {
+                    document.getElementById(answer).disabled = true;
+                }
+                function changeColorDefault(answer) {
+                    document.getElementById(answer).disabled = false;
+                }
 
-                function HideDrawCircle(choice) {
-                    hidden = choice;
-                    if (hidden == "hide") {
-                        document.getElementById('circleHide').style.visibility = 'hidden';
-                    } else {
-                        document.getElementById('circleHide').style.visibility = 'visible';
-                    }
+                function Disable() {
+                    document.getElementById("evolve").disabled = true;
+                    document.getElementById("stopEvolve").disabled = true;
+                    document.getElementById("winningButton").disabled = true;
+                    document.getElementById("circleHide").disabled = true;
                 }
-                function HideEvolve(choice) {
-                    hidden = choice;
-                    if (hidden == "hide") {
-                        document.getElementById('evolve').style.visibility = 'hidden';
-                    } else {
-                        document.getElementById('evolve').style.visibility = 'visible';
-                    }
-                }
-                function HideEvolve(choice) {
-                    hidden = choice;
-                    if (hidden == "hide") {
-                        document.getElementById('evolve').style.visibility = 'hidden';
-                    } else {
-                        document.getElementById('evolve').style.visibility = 'visible';
-                    }
-                }
+                window.onload = Disable;
+
                 //-----------------------------------------THE SCRIPT FOR SQUARES-----------------------------------------------
                 var numOfSquares;
                 var sqStack = new Array();
@@ -70,7 +87,7 @@
                 }
 
                 function runMain() {
-
+                    document.getElementById("circleHide").disabled = false;
                     { //clears output dialog
                         document.getElementById("winner").innerHTML = " ";
                         document.getElementById("evolution").innerHTML = " ";
@@ -188,7 +205,8 @@
 
                 function DrawCircles() {
                     functionCount = 0;
-
+                    document.getElementById("evolve").disabled = false;
+                    document.getElementById("circleHide").disabled = true;
 
                     //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
 
@@ -335,18 +353,22 @@
                 var functionCount = 0;
 
                 function Evolve() {
-
+                    document.getElementById("stopEvolve").disabled = false;
+                    document.getElementById("evolve").disabled = true;
+                    document.getElementById("winningButton").disabled = true;
                     nIntervId = setInterval(NextGenCircles, (.0125 * 1000));
                 }
 
 
 
                 function StopEvolution() {
+                    document.getElementById("evolve").disabled = false;
+                    document.getElementById("stopEvolve").disabled = true;
+                    document.getElementById("winningButton").disabled = false;
+
                     clearInterval(nIntervId);
                     clearInterval(nIntervId);
-                    var observation = "After " + functionCount + " evolutions, the program has guessed " + (functionCount * 8) + " different circles";
-                    console.debug(observation)
-                    document.getElementById("evolution").innerHTML = observation;
+
                 }
 
 
@@ -356,7 +378,7 @@
                     MutateCircle()
                     TransferStack()
                     functionCount++ //incrementing functionCount variable
-                    var observation = "After " + functionCount + " evolutions, the program has guessed " + (functionCount * 8) + " different circles";
+                    var observation = "After " + functionCount + " evolutions, the program has guessed <br> " + (functionCount * 8) + " different circles";
                     console.debug(observation)
                     document.getElementById("evolution").innerHTML = observation;
                 }
@@ -457,6 +479,8 @@
 
                 //===================================================== ELIMINATE ===================================================
                 function Eliminate() {
+                    document.getElementById("evolve").disabled = true;
+                    document.getElementById("stopEvolve").disabled = true;
                     FindWinner()
                     ResetFade()
                     ctx.globalAlpha = (.2 * alpha);
@@ -513,7 +537,7 @@
 
                         {//writes message with winning circle in html
                             var circleToPrint = winningCircles[0]
-                            document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
+                            document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: <br> x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
                         }
                     }
 
@@ -532,14 +556,14 @@
                 <p id="instructions">Step 1 - Select the desired number of squares to display</p>
             </div>
             <div>
-                <button onClick="choose('1')">1 Square</button>
-                <button onClick="choose('2')">2 Squares</button>
-                <button onClick="choose('3')">3 Squares</button>
+                <button id="button1" onClick="choose('1'); changeColor('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">1 Square</button>
+                <button id="button2" onClick="choose('2'); changeColor('button2'); changeColorDefault('button1'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">2 Squares</button>
+                <button id="button3" onClick="choose('3'); changeColor('button3'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">3 Squares</button>
             </div>
             <div>
-                <button onClick="choose('4')">4 Squares</button>
-                <button onClick="choose('5')">5 Squares</button>
-                <button onClick="choose('6')">6 Squares</button>
+                <button id="button4" onClick="choose('4'); changeColor('button4'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button5'); changeColorDefault('button6')">4 Squares</button>
+                <button id="button5" onClick="choose('5'); changeColor('button5'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button6')">5 Squares</button>
+                <button id="button6" onClick="choose('6'); changeColor('button6'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5')">6 Squares</button>
             </div>
             <div>
                 <p id="instructions">Step 2 - Generate Squares and generate Smart Circles</p>
@@ -554,7 +578,7 @@
             <div>
 
                 <button id="evolve" onclick="Evolve()">Evolve Circles</button>
-                <button id="bottomButtons" onclick="StopEvolution()">Stop Evolving</button>
+                <button id="stopEvolve" onclick="StopEvolution()">Stop Evolving</button>
                 <br>
                 <br>
                 <button id="winningButton" onclick="Eliminate(); HideEvolve('hide')">Find Winning Circle</button>
@@ -570,6 +594,7 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
 
