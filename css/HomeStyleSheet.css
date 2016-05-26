@@ -1,19 +1,11 @@
 ﻿body {
     background-color: #f1f1f1;
     width:100%;
-    
     margin: 0px;
-    
-    padding-bottom:60px;
 }
-.program-space{
-    background-color: white;
-    
-    height:400px;
-    width:600px;
-    
-    text-align: center;
-}
+
+
+
 .header {
     text-align: center;
     background-color: white;
@@ -24,7 +16,6 @@
     box-shadow: 0px -5px 20px #242424;
     position: fixed;
     width: 100%;
-
 }
 button { 
   width:120px; 
@@ -33,28 +24,33 @@ button {
 } 
 #container{
     background-color: white;
-    width: 1000px;
-    margin: 100px auto;
+    width: auto;
+    margin: 6%;
     white-space: nowrap;
-    box-shadow: 0px 0px 7px #999999;
+    box-shadow: 0px 0px 30px #999999;
     padding: 60px;
+    min-width: 600px;
 }
 #program{
     margin-right: 10px;
-    display: inline-block;
     vertical-align: top;
+    box-shadow: 0px 0px 14px #4D4D4D;
+    height: 400px;
     width: 600px;
-    box-shadow: 0px 0px 4px #4D4D4D;
-}
-#message{
-    white-space: normal;
+    text-align: center;
+    background-color: white;
+    float: left;
 }
 #buttonContainer{
     display: inline-block;
     vertical-align: top;
-    width: 400px;
+    width: 45%;
     text-align: center;
 }
+#message{
+    white-space: normal;
+}
+
 #outputDialog{
     width: 1000px;
     margin-left: auto;
@@ -63,10 +59,14 @@ button {
     height: 68px;
 }
 #output{
+    float: left;
     display: inline-block;
     width: 50%;
     vertical-align: top;
     text-align: center;
+}
+#generate{
+    width: 271px;
 }
 #winningButton{
     width: 271px;
@@ -74,4 +74,29 @@ button {
 }
 #instructions{
     text-align: center;
+}
+@media all and (max-width:1250px) /*800px for tablets and phones.*/
+{
+    #program{
+        vertical-align: top;
+        box-shadow: 0px 0px 4px #4D4D4D;
+        height: 400px;
+        width: 600px;
+        text-align: center;
+        background-color: white;
+        margin: auto;
+        float:none;
+    }
+    #buttonContainer{
+        display: inline;
+        vertical-align: top;
+        width: auto;
+        text-align: center;
+        margin: auto;
+    }
+    #output{
+        display: inline;
+        vertical-align: top;
+        text-align: center;
+    }
 }
