@@ -34,7 +34,7 @@
             <p>
                 Computers are powerful tools in our fast paced world.
                 We can run all kinds of simulations on computers to find
-                solutions to our problems. In the Natural Selection Squares demo,
+                solutions to our problems. In the Natural Selection Circles demo,
                 a computer could find the perfect location to put a circle by trying
                 different sized circles on every pixel in the canvas. The canvas
                 is 600x400 pixels. A total of 24,000 pixels in the canvas means at
@@ -102,20 +102,30 @@
                         numOfSquares = choice;
                     }
                     var fadeCount = 0
+                    var circleFadeCount = 0
+                    var fadeOutCount = 0
                     var alpha = 1
+                    var circleAlpha = 1
+                    var fadeAlpha = 1
+
                     function ResetFade() {
-                        fadeCount = 0;
-                        alpha = 1;
+                        fadeCount = 0
+                        circleFadeCount = 0
+                        fadeOutCount = 0
+                        alpha = 1
+                        circleAlpha = 1
+                        fadeAlpha = 1
                     }
 
                     function runMain() {
+                        ResetFade()
                         { //clears output dialog
                             document.getElementById("winner").innerHTML = " ";
                             document.getElementById("evolution").innerHTML = " ";
                         }
                         //for loop pops all old squares off stack when user redraws new squares
 
-                        for (i = 0; i < 10; i++) {
+                        for (a = 0; a < 30; a++) {
                             sqStack.pop()
                             circleStack.pop()
                             winningCircles.pop()
@@ -206,13 +216,14 @@
                                 ctx.lineWidth = 1;
                                 ctx.fillStyle = "#000000";
                                 ctx.fillRect(squareToPrint.x - 50, squareToPrint.y - 50, 100, 100);
-                                if (fadeCount >= 50) {
-                                    clearInterval(fadeIntervId);
-                                }
+                                
 
                             }
                             alpha++
                             fadeCount++
+                            if (fadeCount >= 100) {
+                                clearInterval(fadeIntervId);
+                            }
                         }
                         DrawCircles()
                     }
@@ -360,12 +371,13 @@
                                 ctx.beginPath();
                                 ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
                                 ctx.stroke();
-                                if (fadeCount >= 50) {
-                                    clearInterval(fadeCircleInIntervId);
-                                }
+                                
                             }
-                            alpha++
-                            fadeCount++
+                            if (circleFadeCount >= 100) {
+                                clearInterval(fadeCircleInIntervId);
+                            }
+                            circleAlpha++
+                            circleFadeCount++
                         }
 
                     }
@@ -385,7 +397,6 @@
                         document.getElementById("evolve").disabled = false;
                         document.getElementById("stopEvolve").disabled = true;
 
-                        clearInterval(nIntervId);
                         clearInterval(nIntervId);
                         Eliminate()
                     }
@@ -502,7 +513,7 @@
                         document.getElementById("stopEvolve").disabled = true;
                         FindWinner()
                         ResetFade()
-                        ctx.globalAlpha = (.2 * alpha);
+                        ctx.globalAlpha = (.1 * alpha);
                         fadeoutIntervId = setInterval(WinnersCircle, (.02 * 1000));
                     }
                     function FindWinner() {
@@ -559,12 +570,13 @@
                                 document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: <br> x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
                             }
                         }
-
-                        if (fadeCount >= 50) {
+                        fadeAlpha++
+                        fadeOutCount++
+                        if (fadeOutCount >= 50) {
+                            clearInterval(fadeoutIntervId);
                             clearInterval(fadeoutIntervId);
                         }
-                        alpha++
-                        fadeCount++
+                        
                     }
 
                 </script>
@@ -640,7 +652,16 @@
                 </div>
             </div>
         </div>
-    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78574723-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 
 
     <footer class="footer-distributed">
