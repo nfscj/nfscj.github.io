@@ -26,11 +26,11 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NM7HV7');</script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NM7HV7');</script>
     <!-- End Google Tag Manager -->
 
     <header class="header-fixed">
@@ -38,9 +38,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <h1><a href="#">Natural Selection<span> Circles</span></a></h1>
             <nav>
 
-                <a href="#" class="selected">Blog</a>
-                ·
-                <a href="#">About</a>
+                <a href="index.html">Visit My Blog</a>
+
+                
 
 
             </nav>
@@ -411,6 +411,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     function Evolve() {
                         document.getElementById("stopEvolve").disabled = false;
                         document.getElementById("evolve").disabled = true;
+                        document.getElementById("generate").disabled = true;
+                        document.getElementById("button1").disabled = true;
+                        document.getElementById("button2").disabled = true;
+                        document.getElementById("button3").disabled = true;
+                        document.getElementById("button4").disabled = true;
+                        document.getElementById("button5").disabled = true;
+                        document.getElementById("button6").disabled = true;
                         nIntervId = setInterval(NextGenCircles, (.0125 * 1000));
                     }
 
@@ -419,7 +426,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     function StopEvolution() {
                         document.getElementById("evolve").disabled = false;
                         document.getElementById("stopEvolve").disabled = true;
-
+                        document.getElementById("generate").disabled = false;
+                        document.getElementById("button1").disabled = false;
+                        document.getElementById("button2").disabled = false;
+                        document.getElementById("button3").disabled = false;
+                        document.getElementById("button4").disabled = false;
+                        document.getElementById("button5").disabled = false;
+                        document.getElementById("button6").disabled = false;
                         clearInterval(nIntervId);
                         Eliminate()
                     }
@@ -688,9 +701,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="footer-left">
             <p class="footer-links">
 
-                <a href="#">Blog</a>
-                ·
-                <a href="#">About</a>
+                <a href="index.html">Visit My Blog</a>
+                
 
             </p>
             <p>CJ Ughamba &copy; 2016</p>

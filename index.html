@@ -1,701 +1,464 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Natural Selection Circles</title>
-    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-    <link href="css/header-fixed.css" rel="stylesheet" />
-    <link href="css/footer-distributed.css" rel="stylesheet" />
-    <link href="css/HomeStyleSheet.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-78574723-1', 'auto');
-      ga('send', 'pageview');
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</script>
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body>
 
-    <!-- Google Tag Manager -->
-    <noscript>
-        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NM7HV7"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <script>
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NM7HV7');</script>
-    <!-- End Google Tag Manager -->
+<body id="page-top" class="index">
 
-    <header class="header-fixed">
-        <div class="header-limiter">
-            <h1><a href="#">Natural Selection<span> Circles</span></a></h1>
-            <nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">CJ Ughamba's Blog</a>
+            </div>
 
-                <a href="#" class="selected">Blog</a>
-                ·
-                <a href="#">About</a>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img style="width:256px;" class="img-responsive" src="img/selfie.gif" alt="">
 
-            </nav>
+                    <div class="intro-text">
+                        <span class="name">CJ Ughamba</span>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Cleveland Based - Available For Hire</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
-    <!-- You need this element to prevent the content of the page from jumping up -->
-    <div class="header-fixed-placeholder"></div>
 
-
-
-    <div id="container">
-        <div id="message">
-            <h1>A Lesson in Efficiency</h1>
-            <p>
-                Computers are powerful tools in our fast paced world.
-                We can run all kinds of simulations on computers to find
-                solutions to our problems. In the Natural Selection Circles demo,
-                a computer could find the perfect location to put a circle by trying
-                different sized circles on every pixel in the canvas. The canvas
-                is 600x400 pixels. A total of 24,000 pixels in the canvas means at
-                least 24,000 circles will be tried and that’s without different
-                sized circles being factored in. Let’s say for example that the
-                winning circle has a radius of 82 pixels, 24,000 pixels multiplied
-                by 82 radiuses is 1,968,000 possible circles for the computer to simulate.
-                This method of finding the perfect circle is known as brute force.
-                Brute force will eventually find you a solution but that would
-                be slow and very inefficient. I’ve created an algorithm that far more efficient.
-                <br>
-                <br>
-                My algorithm places eight small circles throughout the canvas.
-                It then randomly mutates each circle’s x, y, and radius attributes
-                until they grow as big as they can. My approach allows the computer
-                to find a near perfect candidate quickly in as few as 500 circles
-                and no more than 20,000 circles. Which is far less than 1,968,000 circles.
-
-            </p>
-        </div>
-    </div>
-
-    <div id="container">
-
-        <div id="program">
-            <canvas id="canvas" width="600" height="400"></canvas>
-
-            <div>
-                <br>
-                <br>
-
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>My Portfolio</h2>
+                    <hr class="star-primary">
+                </div>
             </div>
-            <div>
-
-                <br>
-
-                <br>
-                <br>
-                <br>
-            </div>
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-            <script>
-                    function changeColor(answer) {
-                        document.getElementById(answer).disabled = true;
-                    }
-                    function changeColorDefault(answer) {
-                        document.getElementById(answer).disabled = false;
-                    }
-
-                    function Disable() {
-                        document.getElementById("generate").disabled = true;
-                        document.getElementById("evolve").disabled = true;
-                        document.getElementById("stopEvolve").disabled = true;
-
-                    }
-                    window.onload = Disable;
-
-                    //-----------------------------------------THE SCRIPT FOR SQUARES-----------------------------------------------
-                    var numOfSquares;
-                    var sqStack = new Array();
-
-                    function choose(choice) {
-                        document.getElementById("generate").disabled = false;
-                        numOfSquares = choice;
-                    }
-                    var fadeCount = 0
-                    var circleFadeCount = 0
-                    var fadeOutCount = 0
-                    var alpha = 1
-                    var circleAlpha = 1
-                    var fadeAlpha = 1
-
-                    function ResetFade() {
-                        fadeCount = 0
-                        circleFadeCount = 0
-                        fadeOutCount = 0
-                        alpha = 1
-                        circleAlpha = 1
-                        fadeAlpha = 1
-                    }
-
-                    function runMain() {
-                        ResetFade()
-                        { //clears output dialog
-                            document.getElementById("winner").innerHTML = " ";
-                            document.getElementById("evolution").innerHTML = " ";
-                        }
-                        //for loop pops all old squares off stack when user redraws new squares
-
-                        for (a = 0; a < 30; a++) {
-                            sqStack.pop()
-                            circleStack.pop()
-                            winningCircles.pop()
-                            secondarycircleStack.pop()
-                        }
-                        var canvas = document.getElementById("canvas"),
-                        ctx = canvas.getContext("2d");//clears the canvas
-                        ctx.clearRect(0, 0, 1000, 1000)
-
-                        //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
-
-
-                        CreateCanvasSquares()
-                        //Runs program to paint canvas
-                        function CreateCanvasSquares() {
-
-                            GenFirstSquare()
-
-                            for (i = 1; i < numOfSquares; i++) {
-                                GenSquare()
-
-                            }
-                            ResetFade()
-                            ctx.globalAlpha = (.1 * alpha);
-                            fadeIntervId = setInterval(PrintSquares, (.02 * 1000));
-
-
-                        }
-                        //Generates square at random position
-                        function GenFirstSquare() {
-                            function RandomintX(Xmin, Xmax) {
-                                return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
-                            }
-                            function RandomintY(Ymin, Ymax) {
-                                return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                            }
-
-                            var x = RandomintX(1, 499)
-                            var y = RandomintY(1, 299)
-                            var sqInfo = { x: (x + 50), y: (y + 50) };
-                            console.debug(sqInfo)
-                            sqStack.push(sqInfo)
-
-                        }
-                        function GenSquare() {
-                            function RandomintX(Xmin, Xmax) {
-                                return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
-                            }
-                            function RandomintY(Ymin, Ymax) {
-                                return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                            }
-
-                            var x = RandomintX(1, 499)
-                            var y = RandomintY(1, 299)
-                            var sqInfo = { x: (x + 50), y: (y + 50) };
-                            console.debug(sqInfo)
-                            sqStack.push(sqInfo)
-                            CheckNewSquare()
-                        }
-                        //Checks to see if new square overlaps existing squares
-                        function CheckNewSquare() {
-                            for (p = 0; p < i; p++) {
-                                var sq0 = sqStack[p]
-                                var sq1 = sqStack[i]
-                                var x1 = sq0.x
-                                var y1 = sq0.y
-                                var x2 = sq1.x
-                                var y2 = sq1.y
-                                if ((x2 > (x1 + 101)) || (x2 < (x1 - 101)) || (y2 > (y1 + 101)) || (y2 < (y1 - 101))) {
-                                    console.debug("square " + i + " is good")
-                                }
-                                else {
-                                    console.debug("square " + i + " is bad, retry")
-                                    sqStack.pop()
-                                    GenSquare()
-
-                                }
-                            }
-
-                        }
-                        //Prints out all squares
-                        function PrintSquares() {
-
-                            for (p = 0; p < numOfSquares; p++) {
-
-                                var squareToPrint = sqStack[p]
-                                console.debug(squareToPrint)
-                                ctx.lineWidth = 1;
-                                ctx.fillStyle = "#000000";
-                                ctx.fillRect(squareToPrint.x - 50, squareToPrint.y - 50, 100, 100);
-
-
-                            }
-                            alpha++
-                            fadeCount++
-                            if (fadeCount >= 100) {
-                                clearInterval(fadeIntervId);
-                            }
-                        }
-                        DrawCircles()
-                    }
-
-                    //-----------------------------------------THE SCRIPT FOR CIRCLES-----------------------------------------------
-
-                    var numOfCircles = 8;
-                    var circleStack = new Array();
-                    var secondarycircleStack = new Array();
-                    var canvas = document.getElementById("canvas"),
-                        ctx = canvas.getContext("2d");
-
-                    function DrawCircles() {
-                        functionCount = 0;
-                        document.getElementById("evolve").disabled = false;
-
-                        //Set number of squares to appear on screen. Maximum is 6 or program will be extremely slow.
-
-
-                        CreateCanvasCircles()
-                        //Runs program to paint canvas
-                        function CreateCanvasCircles() {
-
-                            GenFirstCircle()
-
-                            for (i = 1; i < numOfCircles; i++) {
-                                GenCircle()
-
-                            }
-                            ResetFade()
-                            ctx.globalAlpha = (.1 * alpha);
-                            fadeCircleInIntervId = setInterval(PrintCircles, (.02 * 1000));
-
-                        }
-                        //Generates FIRST circle at random position
-                        function GenFirstCircle() {
-                            function RandomintX(Xmin, Xmax) {
-                                return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
-                            }
-                            function RandomintY(Ymin, Ymax) {
-                                return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                            }
-
-                            var x = RandomintX(25, 574)
-                            var y = RandomintY(25, 374)
-                            var radius = 25
-                            var circleInfo = { x: x, y: y, radius: radius };
-                            console.debug(circleInfo)
-                            circleStack.push(circleInfo)
-                            CheckFirstCircleOverSquares()
-                        }
-                        //Checks ONLY FIRST circle against existing squares
-                        function CheckFirstCircleOverSquares() {
-                            for (d = 0; d < numOfSquares; d++) {
-                                console.debug(d)
-                                console.debug(numOfCircles)
-                                var square0 = sqStack[d]
-                                var circle1 = circleStack[0]
-                                console.debug(circle1)
-
-                                var x1 = square0.x
-                                var y1 = square0.y
-                                var x2 = circle1.x
-                                var y2 = circle1.y
-                                if ((x2 > (x1 + 76)) || (x2 < (x1 - 76)) || (y2 > (y1 + 76)) || (y2 < (y1 - 76))) {
-                                    console.debug("circle " + i + " is good and doesn't overlap squares")
-                                }
-                                else {
-                                    console.debug("circle " + i + " is bad and overlaps, retry")
-                                    circleStack.pop()
-                                    GenFirstCircle()
-                                }
-                            }
-                        }
-                        //Generates OTHER circles at random position
-                        function GenCircle() {
-                            function RandomintX(Xmin, Xmax) {
-                                return Math.floor(Math.random() * (Xmax - Xmin + 1)) + Xmin;
-                            }
-                            function RandomintY(Ymin, Ymax) {
-                                return Math.floor(Math.random() * (Ymax - Ymin + 1)) + Ymin;
-                            }
-
-                            var x = RandomintX(25, 574)
-                            var y = RandomintY(25, 374)
-                            var radius = 25
-                            var circleInfo = { x: x, y: y, radius: radius };
-                            console.debug(circleInfo)
-                            circleStack.push(circleInfo)
-                            CheckCirclesOverSquares()
-                        }
-                        //Checks to see if new circle overlaps existing squares
-                        function CheckCirclesOverSquares() {
-                            for (d = 0; d < numOfSquares; d++) {
-                                console.debug(d)
-                                console.debug(numOfSquares)
-                                var square = sqStack[d]
-                                var circle = circleStack[i]
-                                var x1 = square.x
-                                var y1 = square.y
-                                var x2 = circle.x
-                                var y2 = circle.y
-                                if ((x2 > (x1 + 76)) || (x2 < (x1 - 76)) || (y2 > (y1 + 76)) || (y2 < (y1 - 76))) {
-                                    console.debug("circle " + i + " is good and doesn't overlap squares")
-                                    CheckNewCircles()
-                                }
-                                else {
-                                    console.debug("circle " + i + " is bad and overlaps, retry")
-                                    circleStack.pop()
-                                    GenCircle()
-                                }
-                            }
-                        }
-                        //Checks to see if new circle overlaps existing circles
-                        function CheckNewCircles() {
-                            for (p = 0; p < i; p++) {
-                                var circle0 = circleStack[p]
-                                var circle1 = circleStack[i]
-                                var x1 = circle0.x
-                                var y1 = circle0.y
-                                var x2 = circle1.x
-                                var y2 = circle1.y
-                                if ((x2 > (x1 + 52)) || (x2 < (x1 - 52)) || (y2 > (y1 + 52)) || (y2 < (y1 - 52))) {
-                                    console.debug("circle " + i + " is good")
-
-                                }
-                                else {
-                                    console.debug("circle " + i + " is bad, retry")
-                                    circleStack.pop()
-                                    GenCircle()
-
-                                }
-                            }
-                        }
-
-
-                        //Prints out all successful circles
-                        function PrintCircles() {
-
-                            for (p = 0; p < numOfCircles; p++) {
-                                var circleToPrint = circleStack[p]
-                                console.debug(circleToPrint)
-                                ctx.strokeStyle = "#FF0000";
-                                ctx.lineWidth = 3;
-                                ctx.beginPath();
-                                ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                                ctx.stroke();
-
-                            }
-                            if (circleFadeCount >= 100) {
-                                clearInterval(fadeCircleInIntervId);
-                            }
-                            circleAlpha++
-                            circleFadeCount++
-                        }
-
-                    }
-                    //================================================MUTATION OF CIRCLES==============================================
-                    var winningCircles = new Array();
-                    var functionCount = 0;
-
-                    function Evolve() {
-                        document.getElementById("stopEvolve").disabled = false;
-                        document.getElementById("evolve").disabled = true;
-                        nIntervId = setInterval(NextGenCircles, (.0125 * 1000));
-                    }
-
-
-
-                    function StopEvolution() {
-                        document.getElementById("evolve").disabled = false;
-                        document.getElementById("stopEvolve").disabled = true;
-
-                        clearInterval(nIntervId);
-                        Eliminate()
-                    }
-
-
-
-                    function NextGenCircles() {
-
-                        MutateCircle()
-                        TransferStack()
-                        functionCount++ //incrementing functionCount variable
-                        var observation = "After " + functionCount + " evolutions, the program has guessed <br> " + (functionCount * 8) + " different circles";
-                        console.debug(observation)
-                        document.getElementById("evolution").innerHTML = observation;
-                    }
-
-
-
-
-                    function MutateCircle() {
-
-
-                        for (c = 0; c < numOfCircles; c++) {
-
-                            for (i = 0; i < 1; i++) {
-
-                                CreateCircleMutant()
-
-                            }
-
-                        }
-
-                        for (c = 0; c < numOfCircles; c++) {
-                            circleStack.pop()
-                        }
-                    }
-                    function CreateCircleMutant() {
-                        function Randomint(min, max) {
-                            return Math.floor(Math.random() * (max - min + 1)) + min;
-                        }
-                        var circleToMutate = circleStack[c]
-                        var circleMutated = { x: (circleToMutate.x + Randomint(-2, 2)), y: (circleToMutate.y + Randomint(-2, 2)), radius: (circleToMutate.radius + Randomint(0, .25)) }
-
-
-
-                        secondarycircleStack.push(circleMutated)
-                        CheckBounds()
-                        //clear old circles
-                        ctx.globalAlpha = 1;
-                        ctx.strokeStyle = "#FFFFFF";
-                        ctx.lineWidth = 5;
-                        ctx.beginPath();
-                        ctx.arc(circleToMutate.x, circleToMutate.y, circleToMutate.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                        ctx.stroke();
-
-
-                    }
-                    function CheckBounds() {
-                        var circleBounds = secondarycircleStack[c]
-                        if ((circleBounds.x + circleBounds.radius < 600) && (circleBounds.x - circleBounds.radius > 0) && (circleBounds.y - circleBounds.radius > 0) && (circleBounds.y + circleBounds.radius < 400)) {
-                            ProtectSquaresFromCircles()
-                        }
-                        else {
-                            secondarycircleStack.pop()
-                            CreateCircleMutant()
-                        }
-                    }
-                    function ProtectSquaresFromCircles() {
-                        for (d = 0; d < numOfSquares; d++) {
-
-                            var square = sqStack[d]
-                            var circle = secondarycircleStack[c]
-                            var x1 = square.x
-                            var y1 = square.y
-                            var x2 = circle.x
-                            var y2 = circle.y
-                            if ((x2 > (x1 + (circle.radius + 53))) || (x2 < (x1 - (circle.radius + 53))) || (y2 > (y1 + (circle.radius + 53))) || (y2 < (y1 - (circle.radius + 53)))) {
-
-                            }
-                            else {
-                                secondarycircleStack.pop()
-                                CreateCircleMutant()
-                            }
-                        }
-                    }
-                    function changeNumOfCircles(updatedNum) {
-                        numOfCircles = updatedNum;
-                    }
-                    function TransferStack() {
-                        for (c = 0; c < (numOfCircles * 1) ; c++) {
-                            var transfer = secondarycircleStack[c]
-                            circleStack.push(transfer)
-                        }
-                        for (c = 0; c < (numOfCircles * 1) ; c++) {
-                            secondarycircleStack.pop()
-                        }
-                        //prints mutated circles
-                        for (k = 0; k < (numOfCircles * 1) ; k++) {
-                            var circleToPrint = circleStack[k]
-                            ctx.strokeStyle = "#FF0000";
-                            ctx.lineWidth = 3;
-                            ctx.beginPath();
-                            ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                            ctx.stroke();
-
-                        }
-                        changeNumOfCircles(numOfCircles * 1)
-                    }
-
-
-                    //===================================================== ELIMINATE ===================================================
-                    function Eliminate() {
-                        document.getElementById("evolve").disabled = true;
-                        document.getElementById("stopEvolve").disabled = true;
-                        FindWinner()
-                        ResetFade()
-                        ctx.globalAlpha = (.1 * alpha);
-                        fadeoutIntervId = setInterval(WinnersCircle, (.02 * 1000));
-                    }
-                    function FindWinner() {
-                        winningCircles.pop()
-
-                        for (i = 0; i < numOfCircles; i++) {
-
-                            for (p = 0; p < numOfCircles; p++) {
-                                var circle0 = circleStack[i]
-                                var circle1 = circleStack[p]
-                                var newRadius = circle0.radius
-                                var oldRadius = circle1.radius
-
-                                if (newRadius >= oldRadius) {
-                                    console.debug("the challenger is greater")
-
-                                }
-                                else {
-                                    console.debug("the challenger has failed")
-                                    i++
-                                    p = 0
-                                }
-                            }
-                            var winner = circleStack[i]
-                            winningCircles.push(winner)//pushes winning circle
-                            i = (numOfCircles - 1);
-                        }
-
-                    }
-
-                    function WinnersCircle() {
-                        for (y = 0; y < numOfCircles; y++) {//clears circles currently on canvas
-                            var circleToMutate = circleStack[y]
-
-                            ctx.strokeStyle = "#FFFFFF";
-                            ctx.lineWidth = 5;
-                            ctx.beginPath();
-                            ctx.arc(circleToMutate.x, circleToMutate.y, circleToMutate.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                            ctx.stroke();
-
-                            {//prints winning circle
-                                var circleToPrint = winningCircles[0]
-                                console.debug(circleToPrint)
-
-                                ctx.strokeStyle = "#FF0000";
-                                ctx.lineWidth = 3;
-                                ctx.beginPath();
-                                ctx.arc(circleToPrint.x, circleToPrint.y, circleToPrint.radius, 0, 2 * Math.PI);  //ctx.arc(x,y,r,sAngle,eAngle * Math.PI);
-                                ctx.stroke();
-                            }
-
-                            {//writes message with winning circle in html
-                                var circleToPrint = winningCircles[0]
-                                document.getElementById("winner").innerHTML = "A winning circle was found at coordinates: <br> x= " + circleToPrint.x + ", y= " + circleToPrint.y + ", and a radius of " + circleToPrint.radius;
-                            }
-                        }
-                        fadeAlpha++
-                        fadeOutCount++
-                        if (fadeOutCount >= 50) {
-                            clearInterval(fadeoutIntervId);
-                            clearInterval(fadeoutIntervId);
-                        }
-
-                    }
-
-            </script>
-            <script>
-
-                    $(document).ready(function () {
-
-                        var showHeaderAt = 150;
-
-                        var win = $(window),
-                                body = $('body');
-
-                        // Show the fixed header only on larger screen devices
-
-                        if (win.width() > 600) {
-
-                            // When we scroll more than 150px down, we set the
-                            // "fixed" class on the body element.
-
-                            win.on('scroll', function (e) {
-
-                                if (win.scrollTop() > showHeaderAt) {
-                                    body.addClass('fixed');
-                                }
-                                else {
-                                    body.removeClass('fixed');
-                                }
-                            });
-
-                        }
-
-                    });
-
-            </script>
-        </div>
-        <div id="buttonContainer">
-            <div>
-                <p id="instructions">Step 1 - Select the desired number of squares to display</p>
-            </div>
-            <div>
-                <button id="button1" onClick="choose('1'); changeColor('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">1 Square</button>
-                <button id="button2" onClick="choose('2'); changeColor('button2'); changeColorDefault('button1'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">2 Squares</button>
-                <button id="button3" onClick="choose('3'); changeColor('button3'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button4'); changeColorDefault('button5'); changeColorDefault('button6')">3 Squares</button>
-            </div>
-            <div>
-                <button id="button4" onClick="choose('4'); changeColor('button4'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button5'); changeColorDefault('button6')">4 Squares</button>
-                <button id="button5" onClick="choose('5'); changeColor('button5'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button6')">5 Squares</button>
-                <button id="button6" onClick="choose('6'); changeColor('button6'); changeColorDefault('button1'); changeColorDefault('button2'); changeColorDefault('button3'); changeColorDefault('button4'); changeColorDefault('button5')">6 Squares</button>
-            </div>
-            <div>
-                <p id="instructions">Step 2 - Generate Squares and generate Smart Circles</p>
-            </div>
-            <div>
-                <button id="generate" onclick="runMain(); ">Generate Squares and Circles</button>
-            </div>
-            <div>
-                <p id="instructions">Step 3 - Use the functions below to find out where <br>the largest circle can be placed</p>
-            </div>
-            <div>
-
-                <button id="evolve" onclick="Evolve()">Start Evolution</button>
-                <button id="stopEvolve" onclick="StopEvolution()">Find Winner</button>
-
+            <div class="row">
+                <div class="col-md-12 text-center portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <p>Click to view</p>
+                            </div>
+                        </div>
+                        <img src="img/Screenshots/2016-06-02 (2).png" class="img-responsive" alt="">
+                    </a>
+                    <a href="../nfscj.github.io/SelectionCircles.html">
+                        <h3 id="projectLabel">Natural Selection Circles</h3>
+                    </a>
+                </div>
+                <!--<div class="col-sm-6 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/cake.png" class="img-responsive" alt="">
+                    </a>
+                </div>-->
+                
             </div>
         </div>
-        <div id="outputDialog">
+    </section>
 
-            <div id="output">
-                <p id="evolution"></p>
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
             </div>
-            <div id="output">
-                <p id="winner"></p>
+            <div class="row">
+                <div id="aboutText" class="col-lg-4">
+                    <p style="font-size: 35px;">I have experience in</p>
+                    <p>HTML, JavaScript, CSS, <br />and C#</p>
+                </div>
+                <div id="aboutText" class="col-lg-4">
+                    <p style="font-size: 35px;">Short Bio</p>
+                    <p>My Name is CJ Ughamba. I'm a young and talented Junior Web Developer and a recent graduate from We Can Code IT coding bootcamp. I'm currently based in Cleveland, Ohio.</p>
+                </div>
+                <div id="aboutText" class="col-lg-4">
+                    <p style="font-size:35px;">Contact Me</p>
+                    <p>Email: ughamba@hotmail.com <br />Phone: 503-740-3182 <br /></p>
+                </div>
+                <!--<div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="https://github.com/nfscj" class="btn btn-lg btn-outline">
+                        <i class="fa fa-github"></i> Visit My Github
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/pub/cj-ughamba/b4/775/4a" class="btn btn-lg btn-outline">
+                        <i class="fa fa-linkedin"></i>  Visit My LinkedIn
+                    </a>
+                </div>-->
             </div>
         </div>
-    </div>
+    </section>
 
 
 
-    <footer class="footer-distributed">
-        <div class="footer-right">
-
-
-            <a target="_blank" href="https://www.linkedin.com/pub/cj-ughamba/b4/775/4a"><i class="fa fa-linkedin"></i></a>
-            <a target="_blank" href="https://github.com/nfscj"><i class="fa fa-github"></i></a>
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p style="font-size: 25px;margin-top: 50px;">Cleveland, OH 44128</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            
+                            <li>
+                                <a href="https://github.com/nfscj" target="_blank" class="btn-social btn-outline"><i class="fa fa-github"></i></a>
+                            </li>
+                      
+                            <li>
+                                <a href="https://www.linkedin.com/pub/cj-ughamba/b4/775/4a" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Watch a Cool Video</h3>
+                        <a href="https://www.youtube.com/watch?v=hrhGTR54E5k" target="_blank">
+                            <p class="btn btn-lg btn-outline" style="font-size: 15px;">Click Here</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer-left">
-            <p class="footer-links">
-
-                <a href="#">Blog</a>
-                ·
-                <a href="#">About</a>
-
-            </p>
-            <p>CJ Ughamba &copy; 2016</p>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        CJ Ughamba &copy; 2016
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-</body>
-</html>
 
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <a href="../nfscj.github.io/SelectionCircles.html">
+                                <h2>Natural Selection Circles</h2>
+                            </a>
+                                <hr class="star-primary">
+                                <a href="../nfscj.github.io/SelectionCircles.html">
+                                    <img src="img/Screenshots/2016-06-02 (2).png" class="img-responsive img-centered" alt="">
+                                </a>
+                                <p>Learn about computing efficiency through an interactive program using a genetic algorithm.</p>
+                                <ul class="list-inline item-details">
+                                    <li>
+                                        Client:
+                                        <strong>
+                                            <a href="https://216software.com/">216 Software LLC</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        Date:
+                                        <strong>
+                                            May 2016
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        Service:
+                                        <strong>
+                                            Web Development
+                                        </strong>
+                                    </li>
+                                </ul>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/freelancer.js"></script>
+
+</body>
+
+</html>
